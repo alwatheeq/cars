@@ -4,8 +4,8 @@ import { Company } from '../../lib/supabase'
 
 interface CompanySelectorProps {
   companies: Company[]
-  selectedCompanyId: number | null
-  onCompanySelect: (companyId: number) => void
+  selectedCompanyId: string | null
+  onCompanySelect: (companyId: string) => void
   error?: string
   loading?: boolean
 }
@@ -25,7 +25,7 @@ const CompanySelector: React.FC<CompanySelectorProps> = ({
         <Building2 className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
         <select
           value={selectedCompanyId || ''}
-          onChange={(e) => onCompanySelect(Number(e.target.value))}
+          onChange={(e) => onCompanySelect(e.target.value)}
           disabled={loading}
           className={`w-full pl-12 pr-10 py-3 border rounded-xl focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200 bg-gray-50 hover:bg-white appearance-none cursor-pointer ${
             error ? 'border-red-500 focus:ring-red-500' : 'border-gray-300'

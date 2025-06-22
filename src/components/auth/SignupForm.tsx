@@ -11,7 +11,7 @@ const SignupForm: React.FC = () => {
     email: '',
     password: '',
     confirmPassword: '',
-    companyId: null as number | null,
+    companyId: null as string | null,
     agreeToTerms: false
   });
   const [showPassword, setShowPassword] = useState(false);
@@ -19,6 +19,9 @@ const SignupForm: React.FC = () => {
   const [errors, setErrors] = useState<{[key: string]: string}>({});
   const [isLoading, setIsLoading] = useState(false);
   const { companies, loading: companiesLoading, error: companiesError } = useCompanies();
+  
+  // Debug log to check companies data
+  console.log('Companies loaded:', companies, 'Loading:', companiesLoading, 'Error:', companiesError);
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value, type, checked } = e.target;
@@ -153,6 +156,7 @@ const SignupForm: React.FC = () => {
   };
 
   const handleCompanySelect = (companyId: number) => {
+  const handleCompanySelect = (companyId: string) => {
     setFormData(prev => ({ ...prev, companyId }));
     if (errors.companyId) {
       setErrors(prev => ({ ...prev, companyId: '' }));

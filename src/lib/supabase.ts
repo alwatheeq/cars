@@ -11,7 +11,7 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
 // Database types based on your schema
 export interface Company {
-  id: number
+  id: string // Changed to string to match UUID type in schema
   name: string
   tagline: string | null
   logo_url: string | null
