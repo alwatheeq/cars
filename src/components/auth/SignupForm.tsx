@@ -155,7 +155,6 @@ const SignupForm: React.FC = () => {
     }
   };
 
-  const handleCompanySelect = (companyId: number) => {
   const handleCompanySelect = (companyId: string) => {
     setFormData(prev => ({ ...prev, companyId }));
     if (errors.companyId) {
